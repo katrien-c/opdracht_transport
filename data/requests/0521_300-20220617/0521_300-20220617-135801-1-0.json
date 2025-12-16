@@ -1,0 +1,1 @@
+{"id": "ec9e5698-f36f-4d7b-bd97-8d53485ba507", "configurationName": "CreateSequence", "tasks": [{"id": "81", "address": {"latitude": 0.5649493437619156, "longitude": 0.22223640867189304}, "timeWindow": {"from": "2022-06-17T07:30:00", "till": "2022-06-17T23:59:00"}}], "fixedTasks": []}
