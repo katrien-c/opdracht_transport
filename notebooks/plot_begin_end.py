@@ -1,11 +1,14 @@
-#20/01/2026 00:00
+# helper functions for plotting routes
 
+#20/01/2026 00:00
+#27/1/2026 16:09 changing first plot from first request data to first response data
+# GPT5.2 27/01/2026 16:20
 from pathlib import Path
 import json
 import numpy as np
 import matplotlib.pyplot as plt
-from time import time
-#start1 = time()
+# GPT5.2 27/01/2026 16:20
+
 
 EARTH_RADIUS_KM = 6371.0088
 
@@ -179,10 +182,15 @@ def visualize_begin_end(
     # First output line: chosen end_choice in uppercase OR number
     print(f"Choice: {chosen_label}")
 
-    # BEGIN = first request (order from request)
-    begin_req = req_files[0]
-    begin_tasks, begin_order_ids, begin_cfg = parse_request_tasks_in_order(begin_req)
-    begin_route_latlon, begin_missing = map_ids_to_coords(begin_tasks, begin_order_ids)
+    # BEGIN = first response (order from first response file)
+    begin_resp = resp_files[0]
+    begin_req = req_by_stem.get(begin_resp.stem)
+    if not begin_req:
+        raise FileNotFoundError(f"No matching request JSON for BEGIN response: {begin_resp.name}")
+
+    begin_tasks, _, begin_cfg = parse_request_tasks_in_order(begin_req)
+    begin_route_ids = read_response_tokens(begin_resp)                 # <-- order from response
+    begin_route_latlon, begin_missing = map_ids_to_coords(begin_tasks, begin_route_ids)
 
     begin_all_lat = np.array([v[0] for v in begin_tasks.values()], float) if begin_tasks else np.array([], float)
     begin_all_lon = np.array([v[1] for v in begin_tasks.values()], float) if begin_tasks else np.array([], float)
@@ -234,7 +242,7 @@ def visualize_begin_end(
 
     # -------------------- Plot 1: BEGIN --------------------
     ax0 = plt.subplot(1, 2, 1)
-    ax0.set_title(f"BEGIN (first request)\n{pretty_title(begin_req)}")
+    ax0.set_title(f"BEGIN (first response)\n{pretty_title(begin_resp)}")
     ax0.set_xlabel("Longitude")
     ax0.set_ylabel("Latitude")
     ax0.set_xlim(x_min - pad_x, x_max + pad_x)
@@ -296,7 +304,7 @@ def visualize_begin_end(
     )
 
     print(f"Number of files: {len(req_files)}")
-    print(f"BEGIN request: {begin_req.name}")
+    print(f"BEGIN response: {begin_resp.name}")
     print(f"END response : {end_resp.name}")
     #print(f"END request  : {end_req.name}")
 
