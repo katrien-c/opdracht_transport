@@ -1,10 +1,11 @@
-# Transport Data Analysis
+# Learning driver preferences
 
 Een Python project voor het analyseren van transport route data, inclusief taken, routes, afstanden en bewegingen over tijd.
 
 ## 📋 Inhoudsopgave
 
 - [Overzicht](#overzicht)
+- [Team](#team)
 - [Installatie](#installatie)
 - [Gebruik](#gebruik)
 - [Project Structuur](#project-structuur)
@@ -19,7 +20,15 @@ Dit project analyseert transport data uit JSON bestanden (requests en responses)
 - Kilometers per route
 - Bewegingen per route
 
-## 🚀 Installatie
+## � Team
+
+Dit project is ontwikkeld door:
+- **Christian Belinga**
+- **Katrien Cogghe**
+- **Dirk De Mulder**
+- **Pascal Delannoye**
+
+## �🚀 Installatie
 
 ### Vereisten
 
