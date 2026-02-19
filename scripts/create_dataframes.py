@@ -162,7 +162,9 @@ def _add_fixed_flag(df, tasks_exploded_df):
         how='left'
     )
     
-    tasks_exploded_df['is_fixed'] = tasks_exploded_df['is_fixed'].fillna(False).astype(bool)
+    # Vul NaN waarden met False en converteer naar bool (zonder downcasting warning)
+    tasks_exploded_df.loc[tasks_exploded_df['is_fixed'].isna(), 'is_fixed'] = False
+    tasks_exploded_df['is_fixed'] = tasks_exploded_df['is_fixed'].astype(bool)
     
     return tasks_exploded_df
 

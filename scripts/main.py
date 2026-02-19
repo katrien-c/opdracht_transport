@@ -21,7 +21,8 @@ debug = True
 
 # Creëer en transformeer alle dataframes
 df, tasks_exploded_df = create_and_transform_dataframes(debug=debug)
-
+display(df.info())
+display(df.head())
 # Plot totale taken per dag
 plot_total_tasks_per_day(df)
 
