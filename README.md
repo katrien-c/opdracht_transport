@@ -36,13 +36,16 @@ cd pad/naar/opdracht_transport
 
 ### Stap 2: Installeer Python Dependencies
 
-Open een terminal (PowerShell of Command Prompt) in de project directory en voer het volgende commando uit:
+#### Methode 1: Via requirements.txt (Aanbevolen)
+
+Open een terminal (PowerShell of Command Prompt) in de project directory:
 
 ```bash
-pip install pandas matplotlib numpy ipython ipywidgets
+# Installeer alle dependencies in één keer
+pip install -r requirements.txt
 ```
 
-Of als je een virtual environment wilt gebruiken (aanbevolen):
+#### Methode 2: Met Virtual Environment (Best Practice)
 
 ```bash
 # Maak een virtual environment
@@ -55,7 +58,13 @@ python -m venv venv
 # Voor Windows Command Prompt:
 .\venv\Scripts\activate.bat
 
-# Installeer dependencies
+# Installeer dependencies vanuit requirements.txt
+pip install -r requirements.txt
+```
+
+#### Methode 3: Handmatige installatie
+
+```bash
 pip install pandas matplotlib numpy ipython ipywidgets
 ```
 

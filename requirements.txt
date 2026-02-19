@@ -1,0 +1,14 @@
+# Core data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualization
+matplotlib>=3.7.0
+
+# Jupyter support
+ipython>=8.0.0
+ipywidgets>=8.0.0
+
+# Optional: Voor Jupyter notebooks
+# jupyter>=1.0.0
+# jupyterlab>=4.0.0
